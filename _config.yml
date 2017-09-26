@@ -1,6 +1,6 @@
 markdown: kramdown
 highlighter: pygments
-permalink: /posts/:title.html
+permalink: /:categories/:title.html
 excerpt_separator: "<!-- more -->"
 
 github: qif618
@@ -10,8 +10,8 @@ name: "QIF"
 url: http://www.98life.com
 domain: www.98life.com
 all_categories: [
-["python", "Python","/posts/python.html"], 
-["hibernate", "Hibernate","/posts/hibernate.html"],
+["python", "Python","/python/index.html"], 
+["hibernate", "Hibernate","/hibernate/index.html"],
 ["spring", "Spring","/posts/web.html"], 
 ["mybatis", "Mybatis","/posts/linux.html"],
 ["read", "读书笔记","/posts/read.html"], 
