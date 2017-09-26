@@ -24,6 +24,9 @@
     <script src="/js/jquery-1.11.0.js"> </script>
     <!-- Bootstrap Core JavaScript -->
     <script src="/js/bootstrap.min.js"></script>
+	<style>
+	
+	</style>
   </head>
   
   <body>
@@ -56,29 +59,34 @@
       <!-- /.container -->
     </nav>
     <!-- Page Content -->
-    <div class="container">
+ <div class="container">
       <div class="row">
         <!-- Blog Entries Column -->
         <div class="col-md-8">
+		
+		<div class="well">
           {{ content }}
+		  </div>
         </div>
         <!-- Blog Sidebar Widgets Column -->
+		
         <div class="col-md-4">
           <!-- Blog Categories Well -->
           <div class="well">
             <h4>
-              栏目分类
-            </h4>
+              个人简介
+            </h4><hr>
             <div class="row">
-              {% include categories.html %} 
+              {% include aboutme.html %} 
             </div>
             <!-- /.row -->
           </div>
 		  <!-- Blog Recent Well -->
           <div class="well">
+		  
             <h4>
               最新文章
-            </h4>
+            </h4><hr>
 			<div class="row">
               {% include recent_posts.html %} 
 			</div>
@@ -87,7 +95,7 @@
           <div class="well">
             <h4>
               友情链接
-            </h4>
+            </h4><hr>
             {% include friend_links.html %} 
           </div>
         </div>

@@ -60,32 +60,63 @@
       <div class="row">
         <!-- Blog Entries Column -->
         <div class="col-md-8">
-			<!-- Navi -->
-			{% for cat in site.all_categories %}{% if page.category == cat[0] %}<a href="/">首页</a>&nbsp;>&nbsp;<a href="{{cat[2]}}">{{cat[1]}}</a>&nbsp;>&nbsp;列表{% endif %}{% endfor %}
-			<!-- List -->
-			<ul class="list-unstyled">
-			{% for post in site.categories[page.category] %}
-			  {% capture y %}{{post.date | date:"%Y"}}{% endcapture %}
-			  {% if year != y %}
-				{% assign year = y %}
-				<h2>{{ post.date | date: '%Y' }}</h2> 
-			  {% endif %}
-			  <li>
-				<h4><span>{{ post.date | date:"%Y-%m-%d" }}</span>&raquo;
-				<a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h4>
-			  </li> 
-			{% endfor %}
-			</ul>
+			<div class="well">
+				<!-- Navi -->
+				{% for cat in site.all_categories %}{% if page.category == cat[0] %}<a href="/">首页</a>&nbsp;>&nbsp;<a href="{{cat[2]}}">{{cat[1]}}</a>&nbsp;>&nbsp;列表{% endif %}{% endfor %}
+				<!-- List -->
+				
+				{% for post in site.categories[page.category] %}
+				  <h2>
+					  <a href="{{ post.url }}">
+						{{ post.title }}
+					  </a> 
+					  <div class="post-date">
+						<span class="glyphicon glyphicon-time"></span>
+						{{ post.date | date:"%Y-%m-%d" }}
+					  </div>
+					</h2>
+					<hr>
+					{{ post.excerpt }}
+						<p><h4 class="ydqw"><a href="{{ post.url }}">阅读全文 &raquo;</a></h4></p>
+					<hr>
+				{% endfor %}
+				<!-- Pager indicator -->
+				<ul class="pager">
+				  {% if paginator.previous_page %} {% if paginator.previous_page == 1 %}
+				  <li class="previous">
+					<a href="/">
+					  &larr; 上一页
+					</a>
+				  </li>
+				  {% else %}
+				  <li class="previous">
+					<a href="/posts/page{{ paginator.previous_page }}/index.html">
+					  &larr; 上一页
+					</a>
+				  </li>
+				  {% endif %} {% endif %} {% if paginator.next_page %}
+				  <li class="next">
+					<a href="/posts/page{{ paginator.next_page }}/index.html">
+					  下一页 &rarr;
+					</a>
+				  </li>
+				  {% endif %}
+				</ul>
+			</div>
+
+
+
+
         </div>
         <!-- Blog Sidebar Widgets Column -->
         <div class="col-md-4">
           <!-- Blog Categories Well -->
           <div class="well">
             <h4>
-              栏目分类
+              个人简介
             </h4>
             <div class="row">
-              {% include categories.html %} 
+              {% include aboutme.html %} 
             </div>
             <!-- /.row -->
           </div>
