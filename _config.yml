@@ -14,7 +14,7 @@ all_categories: [
 ["hibernate", "Hibernate","/hibernate/index.html"],
 ["spring", "Spring","/posts/web.html"], 
 ["mybatis", "Mybatis","/posts/linux.html"],
-["read", "读书笔记","/posts/read.html"], 
+["git", "Git","/git/index.html"], 
 ["other", "杂记","/posts/other.html"],
 ["about", "关于","/about.html"]
 ]
