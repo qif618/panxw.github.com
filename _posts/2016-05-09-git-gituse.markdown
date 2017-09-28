@@ -17,11 +17,14 @@ tags: [Git]
 
 4、在github上用户名下打开settings,通过左侧的SSH AND GPG KEYS中添加SSH KEY（点击new key,出现key栏位）。打开C:\Users\你的计算机用户名）内 .ssh 文件夹，找到id_rsa.pub，拷贝全部内容至github中的KEY栏位。
 
+![](../markdownImg/git/addKey.PNG)
 
 5、测试是否连接成功  
 
     输入$ ssh -T git@github.com测试是否连接成功。  
     
+链接成功，如下图：  
+![](../markdownImg/git/testSuccess.PNG)
 
 6、从github上clone项目到本地仓库。  
 
@@ -32,6 +35,8 @@ tags: [Git]
 	
     1、cd到项目文件夹路径
     2、$  git pull
+
+![](../markdownImg/git/gitpull.PNG)
 
 8、提交本地文件到远程仓库
 

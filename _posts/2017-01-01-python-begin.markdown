@@ -4,19 +4,21 @@ category: "python"
 title:  "python初认识"
 tags: [Python]
 ---
-### python安装   ###
+#### python安装   ####
 
  
-- www.pathon.org下载pythoy  
+> www.pathon.org下载python    
     
-- 安装pythoy,安装时后续add path  
+
+安装python,安装时后续add path  
     Eclipse中安装python环境：点击help,点击install software,add 名称pyDev,[链接](http://www.pydev.org/update_sites/4.5.5),python4.5.5是JDK7支持的最高版本，
     pydev安装跟jdk版本、eclipse版本要一致，否则安装完成后，在preference中不能找到pydev.  
- 
--    PS:安装完成pydev后，需在preference中的pyDEV中配置本地安装的python.  
-   
--  PS:python3.5不再支持mysqldb，所以需安装pymysql，命令：执行pip3 install pymysql即可。
 <!-- more -->   
+
+PS:安装完成pydev后，需在preference中的pyDEV中配置本地安装的python.  
+   
+PS:python3.5不再支持mysqldb，所以需安装pymysql，命令：执行pip3 install pymysql即可。
+
 ### 设置python默认编码 ###
     import sys  
     reload(sys)  

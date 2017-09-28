@@ -1,5 +1,5 @@
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
 permalink: /:categories/:title.html
 excerpt_separator: "<!-- more -->"
 
@@ -15,7 +15,7 @@ all_categories: [
 ["spring", "Spring","/posts/web.html"], 
 ["mybatis", "Mybatis","/posts/linux.html"],
 ["git", "Git","/git/index.html"], 
-["other", "杂记","/posts/other.html"],
+["web", "Web","/web/index.html"],
 ["about", "关于","/about.html"]
 ]
 
