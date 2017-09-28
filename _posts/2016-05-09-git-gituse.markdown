@@ -23,7 +23,7 @@ tags: [Git]
 
     输入$ ssh -T git@github.com测试是否连接成功。  
     
-![](/assets/test_result_cloudflare.png)
+![](/markdownImg/aboutme.JPG)
 
 6、从github上clone项目到本地仓库。  
 
