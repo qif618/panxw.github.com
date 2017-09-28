@@ -17,7 +17,7 @@ tags: [Git]
 
 4、在github上用户名下打开settings,通过左侧的SSH AND GPG KEYS中添加SSH KEY（点击new key,出现key栏位）。打开C:\Users\你的计算机用户名）内 .ssh 文件夹，找到id_rsa.pub，拷贝全部内容至github中的KEY栏位。
 
-![](https://my.csdn.net/my/album/detail/1835595)  
+![](https://github.com/qif618/qif618.github.io/blob/master/markdownImg/aboutme.JPG)  
 
 5、测试是否连接成功  
 
