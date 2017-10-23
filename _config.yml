@@ -12,14 +12,14 @@ domain: www.98life.com
 all_categories: [
 ["python", "Python","/python/index.html"], 
 ["hibernate", "Hibernate","/hibernate/index.html"],
-["spring", "Spring","/posts/web.html"], 
-["mybatis", "Mybatis","/posts/linux.html"],
+["spring", "Spring","/posts/index.html"], 
+["mybatis", "Mybatis","/posts/index.html"],
 ["git", "Git","/git/index.html"], 
 ["web", "Web","/web/index.html"],
 ["about", "关于","/about.html"]
 ]
 
-paginate: 8
+paginate: 2
 paginate_path: "posts/page:num"
 timezone: America/Los_Angeles
 

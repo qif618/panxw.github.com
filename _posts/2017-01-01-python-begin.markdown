@@ -7,7 +7,7 @@ tags: [Python]
 #### python安装   ####
 
  
-> www.pathon.org下载python    
+> www.python.org下载python    
     
 
 安装python,安装时后续add path  
