@@ -10,7 +10,9 @@ tags: [Web]
 		<label>密码</label><input id="password" name="password" value="${u.password}">
 		<span id="error"></span>
 		<br><br><br><br><br>
-		<input type="button" value="登录" onclick="return loginyz(this)"/>  
+		<input type="button" value="登录" onclick="return loginyz(this)"/> 
+ 
+<!-- more -->  
 
 ### js:   ###
 
@@ -45,7 +47,8 @@ tags: [Web]
                 }  
             });  
         	
-    	}  
+    	}    
+
 ###  action:   ###
 
     @RequestMapping("/login")

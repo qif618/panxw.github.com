@@ -4,7 +4,7 @@ category: "web"
 title:  "JSON测试"
 tags: [Web]
 ---
-使用Ajax访问后台：  
+## 使用Ajax访问后台 ##
 
 
     $("#ddd").click(function(){
@@ -20,9 +20,12 @@ tags: [Web]
     			  alert("异常！");
     			 }
     			});
-    		});
+    		});  
 
-后台Action:  
+<!--more-->  
+
+## 后台Action: ##   
+
 
     public void jsonTest(HttpServletRequest req, HttpServletResponse resp) {
     		resp.setContentType("text/html;charset=utf-8");

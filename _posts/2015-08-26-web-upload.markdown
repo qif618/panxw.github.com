@@ -12,7 +12,7 @@ tags: [Web]
     	  <input type="file" name="file">
    	      <input type="submit" name="Submit" value="upload">  
     </form>    
-
+<!-- more -->
 ## servlet:   
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)  

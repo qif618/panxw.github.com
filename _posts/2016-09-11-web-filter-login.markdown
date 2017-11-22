@@ -4,7 +4,9 @@ category: "web"
 title:  "使用filter校验登录"
 tags: [Web]
 ---
+请求先经过过滤器，如果已经登录了，就执行该请求，否则先进入登录界面。  
 
+<!-- more -->
 		 @Override
 	      public void doFilter(ServletRequest request, ServletResponse response,
 	              FilterChain chain) throws IOException, ServletException {
