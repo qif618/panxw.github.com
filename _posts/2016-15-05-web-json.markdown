@@ -1,0 +1,44 @@
+---
+layout: post
+category: "web"
+title:  "JSON测试"
+tags: [Web]
+---
+使用Ajax访问后台：  
+
+
+    $("#ddd").click(function(){
+    			$.ajax({
+    				type:'post',
+    				url:"<%=basePath%>messageServlet?method=jsonTest",
+    				data:{id:2},
+    				success:function(data){
+    					alert(data);					
+    				},
+    				error : function() {
+    			  // view("异常！");
+    			  alert("异常！");
+    			 }
+    			});
+    		});
+
+后台Action:  
+
+    public void jsonTest(HttpServletRequest req, HttpServletResponse resp) {
+    		resp.setContentType("text/html;charset=utf-8");
+    		CommandContent c1 = new CommandContent();
+    		c1.setId(1);
+    		c1.setDescription("第一个");
+    		CommandContent c2 = new CommandContent();
+    		c2.setId(1);
+    		c2.setDescription("第二个");
+    		List<CommandContent> list = new ArrayList<>();
+    		list.add(c2);
+    		list.add(c1);
+    		JSONArray jsonArray = JSONArray.fromObject(list);
+    		resp.getWriter().print(jsonArray.toString());
+    	}  
+
+如果是返回一个对象用：JSONObject jsonObject = JSONObject.fromObject(c1);  
+PS：resp.setContentType("text/html;charset=utf-8")为返回类型。页面上用实体属性取值
+时需返回text/x-json。否则undefined
