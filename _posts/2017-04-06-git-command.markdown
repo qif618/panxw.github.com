@@ -18,7 +18,7 @@ git branch
 ```
 git branch -r
 ```
-
+<!-- more -->
 初始化本地git:  
 
 ```
