@@ -1,8 +1,8 @@
 ---
 layout: post
-category: "git"
+category: "other"
 title:  "Jekyll安装调试"
-tags: [Jekyll]
+tags: [Other]
 ---
 
 

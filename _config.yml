@@ -1,6 +1,6 @@
 markdown: kramdown
 highlighter: rouge
-permalink: /:categories/:title.html
+permalink: /qif/:categories/:title.html
 excerpt_separator: "<!-- more -->"
 
 github: qif618
@@ -17,6 +17,7 @@ all_categories: [
 ["git", "Git","/qif/git/index.html"], 
 ["linux", "Linux","/qif/linux/index.html"], 
 ["web", "Web","/qif/web/index.html"],
+["other", "Other","/qif/other/index.html"],
 ["about", "关于","/qif/aboutMe.html"]
 ]
 
