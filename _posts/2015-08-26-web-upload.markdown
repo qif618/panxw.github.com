@@ -6,12 +6,13 @@ tags: [Web]
 ---
 ## jsp: ##
 
-     <form action="fileupload" method="post" enctype="multipart/form-data" name="form1">  
-  	      <input type="file" name="file">  
-    	  <input type="file" name="file">
-    	  <input type="file" name="file">
-   	      <input type="submit" name="Submit" value="upload">  
+    <form action="fileupload" method="post" enctype="multipart/form-data" name="form1">  
+  	  <input type="file" name="file">  
+    	    <input type="file" name="file">
+   	   <input type="file" name="file">
+   	   <input type="submit" name="Submit" value="upload">  
     </form>    
+
 <!-- more -->
 ## servlet:   
 

@@ -12,9 +12,10 @@ domain: www.98life.com
 all_categories: [
 ["python", "Python","/python/index.html"], 
 ["hibernate", "Hibernate","/hibernate/index.html"],
-["spring", "Spring","/posts/index.html"], 
+["spring", "Spring","/spring/index.html"], 
 ["mybatis", "Mybatis","/posts/index.html"],
 ["git", "Git","/git/index.html"], 
+["linux", "Linux","/linux/index.html"], 
 ["web", "Web","/web/index.html"],
 ["about", "关于","/about.html"]
 ]

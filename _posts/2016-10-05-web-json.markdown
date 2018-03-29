@@ -8,21 +8,21 @@ tags: [Web]
 
 
     $("#ddd").click(function(){
-    			$.ajax({
-    				type:'post',
-    				url:"<%=basePath%>messageServlet?method=jsonTest",
-    				data:{id:2},
-    				success:function(data){
-    					alert(data);					
-    				},
-    				error : function() {
-    			  // view("异常！");
-    			  alert("异常！");
-    			 }
-    			});
-    		});  
+		$.ajax({
+			type:'post',
+			url:"<%=basePath%>messageServlet?method=jsonTest",
+			data:{id:2},
+			success:function(data){
+				alert(data);					
+			},
+			error : function() {
+		  // view("异常！");
+		  alert("异常！");
+		 }
+		});
+	});  
 
-<!--more-->  
+<!-- more -->  
 
 ## 后台Action: ##   
 
@@ -42,6 +42,8 @@ tags: [Web]
     		resp.getWriter().print(jsonArray.toString());
     	}  
 
-如果是返回一个对象用：JSONObject jsonObject = JSONObject.fromObject(c1);  
+
+
+> 如果是返回一个对象用：JSONObject jsonObject = JSONObject.fromObject(c1);  
 PS：resp.setContentType("text/html;charset=utf-8")为返回类型。页面上用实体属性取值
 时需返回text/x-json。否则undefined
