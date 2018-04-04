@@ -1,0 +1,13 @@
+---
+layout: post
+category: "other"
+title:  "eclipse中SVN安装"
+tags: [Other]
+---
+
+
+> eclipse中SVN安装  
+
+1. help==>install new software中输入http://subclipse.tigris.org/update_1.8.x。  
+1. 两个都勾选。  
+1. 一直NEXT即可完成 安装。

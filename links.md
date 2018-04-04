@@ -27,7 +27,7 @@ tags: [链接]
 </a>
 </li>
 <li>
-<a href="http://99u.com/">
-  99U
+<a href="http://jq22.com/">
+  jq22
 </a>
 </li>

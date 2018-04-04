@@ -6,7 +6,9 @@ title: "记录"
 <!-- Loop output paged posts -->
 {% for post in paginator.posts %}
 <h2>
+ 
   <a href="{{ post.url }}">
+   <span class="glyphicon glyphicon-link"></span>
     {{ post.title }}
   </a> 
   <div class="post-date">

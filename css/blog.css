@@ -7,7 +7,8 @@
 body {
 
 background-image: url(/markdownImg/bgimg.jpg);
-font-family: 'Helvetica Neue',Helvetica,Arial,'Microsoft YaHei',sans-serif;
+font: 14px/2 tahoma, arial, Microsoft YaHei, sans-serif;
+
     color: #333;
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
@@ -19,12 +20,30 @@ img {
     max-height: 100%;
 
 }
+blockquote{
+	border-left: 3px solid #eee;
+	padding:0 20px;
+}
+/* 链接颜色 */
+a{
+	color: #999;
+}
+a:hover,a:focus{
+	color: #555;
+	text-decoration: none;
+}
+/* 菜单字体 */
+.nav.navbar-nav>li>a{
+	font-weight:bold;
+	font: 14px tahoma, arial, Microsoft YaHei, sans-serif;
+}
 
 pre{
     font-size: 13px;
-    color: #d1d1c9;
+    color: #444;
     border: none;
-    background-color: #444443;
+    background-color: #e5e6e8;
+	border-radius:5px;
 }
 .ydqw{/* 阅读全文靠右显示 */
     text-align: right;
@@ -35,6 +54,7 @@ footer {
 }
 
 .post-date{
+	color: #999;
 	float:right;
 	padding:5px;
 	font-size:12px
@@ -43,7 +63,64 @@ footer {
     background-color: #f8f8fd;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 30px rgba(10, 10, 0, 0.1) inset;
 }
-h2{/* 文章标题字体大小 */
-  font-size:20px;
+h1,h2,h3,h4,h5,h6{/* 文章标题字体大小 */
+	color:#222;
 }
+h2{
+	font-size:20px;
+}
+
+h3{
+	font-size:20px;
+}
+
 .well-ad{min-height:20px;padding-left:5px; padding-top:5px;padding-bottom:3px;margin-bottom:20px;background-color:#f5f5f5;border:1px solid #e3e3e3;}
+/* 搜索s输入框 */
+.search-query{
+	width: 240px;
+	border: 0;
+	/* border: 1px solid #68626f; */
+    background: transparent;
+    outline: none;
+    padding: 0 0 0 30px;
+    border-radius: 3px;
+	color:#999;
+}
+.search-query:focus{
+
+	border-color: #aaaab1;
+	color:#999;
+	box-shadow: none;
+	outline: 0;
+}
+.navbar-collapse .search{
+	float: right;
+    margin: 12px 0 0 10px;
+}
+.navbar-collapse .search .results{
+	color:#999;
+}
+.navbar-collapse .search .results>li{
+	list-style: none;
+	margin-left: -25px;
+}
+.navbar-collapse .search .results>li>a:hover{
+	color:#fff;
+}
+/* 搜索图标 */
+.navbar-collapse .search .search-icon{
+	color:#999;
+	margin-left: 10px;
+    position: absolute;
+    top: 20px;
+}
+
+/* 链接：jq22、stackoverflow等 */
+.friend-link{
+	margin:0 20px;
+}
+.copyright{
+	color: #999;
+}
+
+

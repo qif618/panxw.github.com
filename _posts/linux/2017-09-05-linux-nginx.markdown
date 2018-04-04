@@ -4,13 +4,16 @@ category: "linux"
 title:  "linux下安装nginx"
 tags: [linux]
 ---
+* 目录
+{:toc}
 
+#### 要安装nginx需先安装依赖 ####
 批量安装nginx依赖  
 
 ```
 yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel
 ```
-
+#### 下载安装nginx ####
 下载nginx:http://nginx.org/download/    
 
 ```
@@ -61,8 +64,10 @@ ps aux | grep nginx
 ```
 service iptables stop
 ```
- 
-在nginx.conf文件中添加  
+
+### 配置nginx
+
+在nginx.conf文件中添加    
  
 ```
 include vhost/*.conf;

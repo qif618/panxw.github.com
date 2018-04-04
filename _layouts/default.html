@@ -4,6 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="toTop" content="true">
     <meta name="description" content="{{ page.title }} - {{ site.name }} - 作者:{{ site.author }}"/> 
 	{% if page.tags.size > 0%}<meta name="keywords" content="{% for tag in page.tags %}{% if tag != "" %}{{ tag }}{% if forloop.index != page.tags.size %},{% endif %}{% endif %}{% endfor %}"/>{% endif %}
     <title>{{ page.title }} - {{ site.name }}</title>
@@ -50,8 +51,10 @@
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          {% include navigation.html %} 
+			  {% include navigation.html %}
+			  
         </div>
+		
         <!-- /.navbar-collapse -->
       </div>
       <!-- /.container -->
@@ -89,12 +92,12 @@
 			</div>
           </div>		  
 		  <!-- Blog Links Well -->
-          <div class="well">
+          <!-- <div class="well">
             <h4>
               友情链接
             </h4><hr>
             {% include friend_links.html %} 
-          </div>
+          </div> -->
         </div>
       </div>
       <!-- /.row -->

@@ -8,6 +8,6 @@ tags: [Git]
 <!--more-->  
 
 window>>prefrences>
-![](../markdownImg/git/eclipseGit.PNG)
+![](../../markdownImg/git/eclipseGit.PNG)
 
 

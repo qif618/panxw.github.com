@@ -8,4 +8,4 @@ elispse中push代码到远程仓库时报如下图错误，表明代码冲突了
 然后再执行push.    
 <!--more-->  
 
-![](../markdownImg/git/eclipseGitPushError.PNG)
+![](../../markdownImg/git/eclipseGitPushError.PNG)

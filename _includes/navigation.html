@@ -7,3 +7,43 @@
 				</li>
 			{% endfor %}
 		</ul> 
+		<!-- 搜索框 -->
+		<div id="search" class="search">
+				
+				<input type="text" id="search-query" class="search-query" name="q" placeholder="输入关键字.." autocomplete="off">
+				
+				<span class="glyphicon glyphicon-search search-icon"></span>
+				
+				<ul id="results" class="results"></ul>
+			  
+		</div>
+	
+	<!-- 搜索框JS -->
+	<script src="/js/simple-jekyll-search.min.js"></script>
+
+
+	<script type="text/javascript">
+	  $(function() {
+		  SimpleJekyllSearch({
+					searchInput: document.getElementById('search-query'),
+					resultsContainer: document.getElementById('results'),
+					json: '/search.json',
+					searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>', // 文章列表模板
+					noResultsText: '未搜索到', 
+					limit: 10, // 返回最大文章数
+					fuzzy: false // 是否模糊匹配
+         });
+		 $(document).bind("click",function(e){//点击空白处，信息面板消失
+		  var target  = $(e.target);
+		  if(target.closest("#search").length == 0){
+			  $('#search-query').val("");
+			 
+			   $('#results').html("");
+			  
+			   
+		  }
+	   });
+		
+
+	  });
+	</script>
