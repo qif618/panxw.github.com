@@ -122,5 +122,11 @@ h3{
 .copyright{
 	color: #999;
 }
+.links .vertical-line{
+	color:#f8f8fd;
+}
 
-
+/* ·ÖÒ³°´Å¥ */
+.pager li>a{
+	border-radius:5px;
+}
