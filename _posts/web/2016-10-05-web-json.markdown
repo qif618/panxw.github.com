@@ -1,7 +1,7 @@
 ---
 layout: post
 category: "web"
-title:  "JSON测试"
+title:  "后端返回json"
 tags: [Web]
 ---
 ## 使用Ajax访问后台 ##

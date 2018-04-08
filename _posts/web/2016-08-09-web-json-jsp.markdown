@@ -1,7 +1,7 @@
 ---
 layout: post
 category: "web"
-title:  "JSON测试"
+title:  "前端定义json"
 description: "定义一个json，在页面中引入json，调用"
 tags: [Web]
 ---
