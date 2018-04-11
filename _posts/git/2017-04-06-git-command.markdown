@@ -89,4 +89,12 @@ git checkout v1.0
 
     git remote add origin git@github.com:yourgithub/test.git
     
-    git pull origin master
+    git pull origin master  
+
+合并master  
+
+	git merge origin master
+打tag   
+
+	git tag dev-tag
+	git push origin dev-tag
