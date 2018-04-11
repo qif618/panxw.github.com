@@ -1,10 +1,9 @@
 ---
 layout: post
 category: "other"
-title:  "SVN安装"
-tags: [Other]
----
-
+title:  "webpack安装"
+tags: [webpack]
+---  
 
 
 > webpack依赖nodejs，故先安装nodejs  
