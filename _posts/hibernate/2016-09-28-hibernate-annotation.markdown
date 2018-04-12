@@ -2,7 +2,7 @@
 layout: post
 category: "hibernate"
 title:  "hibernate注解"
-tags: [hibernate]
+tags: [Hibernate]
 ---
 ### 一对一   ###
 

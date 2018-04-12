@@ -7,33 +7,33 @@ tags: [IDEA]
 
 > 通过project structure配置JDK  
 
-![](/markdownImg/other/configjdk.PNG)  
+![](/markdownImg/other/configjdk.png)  
 
 
 > 配置mavne  
 
-![](/markdownImg/other/maven.PNG)  
+![](/markdownImg/other/maven.png)  
 <!-- more -->
 
 
 > 配置idea自动下载jar  
 
-![](/markdownImg/other/autodownload.PNG)  
+![](/markdownImg/other/autodownload.png)  
 
 
 > 配置git  
 
-![](/markdownImg/other/configgit.PNG)  
+![](/markdownImg/other/configgit.png)  
 
 
 > 配置以便terminal中使用git  
 
-![](/markdownImg/other/terminalgit.PNG)  
+![](/markdownImg/other/terminalgit.png)  
 > idea会报找不到spring注入的bean，所有把此处从error改为warning  
 
-![](/markdownImg/other/nobean.PNG)  
+![](/markdownImg/other/nobean.png)  
 
 
 > idea中让项目自动编译  
 
-![](/markdownImg/other/automake.PNG)
+![](/markdownImg/other/automake.png)

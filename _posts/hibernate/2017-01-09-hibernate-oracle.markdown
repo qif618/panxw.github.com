@@ -2,7 +2,7 @@
 layout: post
 category: "hibernate"
 title:  "hibernate-spring链接Oracle"
-tags: [hibernate]
+tags: [Hibernate]
 ---
 
 > 使用hibernate以及spring链接Oracle数据库的Application.xml的配置：  

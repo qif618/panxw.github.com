@@ -2,7 +2,7 @@
 layout: post
 category: "hibernate"
 title:  "hibernate一对多"
-tags: [hibernate]
+tags: [Hibernate]
 ---
 一的一方：学生类  
 
