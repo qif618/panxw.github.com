@@ -1,7 +1,7 @@
 ---
 layout: post
 category: "web"
-title:  "dubbo注册zookeper问题"
+title:  "dubbo注册zookeeper问题"
 tags: [dubbo]
 ---
 
