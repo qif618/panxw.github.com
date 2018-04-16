@@ -21,6 +21,8 @@ table表
 		</tr>
     	</table>
 
+<!-- more -->
+
 add和delete方法  
 
 

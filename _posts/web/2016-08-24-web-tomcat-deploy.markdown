@@ -11,7 +11,7 @@ tags: [tomcat]
 
 将项目war包（可在eclipse中将项目export war包）直接拷贝到tomcat目录下的webapps文件下，运行tomcat，它会自行解压，通过项目名直接访问即可
 
-
+<!-- more -->
 
 > 方法二  
 

@@ -18,7 +18,7 @@ tags: [maven]
         <url>http://maven.aliyun.com/nexus/content/groups/public</url>
     </mirror> 
 
-
+<!-- more -->
 
 > 最后在mvnrepository.com上下载jar，然后使用命令行maven命令安装。。
 
