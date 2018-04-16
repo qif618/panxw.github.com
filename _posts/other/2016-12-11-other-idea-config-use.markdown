@@ -10,9 +10,10 @@ tags: [IDEA]
 ![](/markdownImg/other/configjdk.png)  
 
 
-> 配置mavne  
+> 配置maven  
 
 ![](/markdownImg/other/maven.png)  
+
 <!-- more -->
 
 
