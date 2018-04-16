@@ -76,12 +76,18 @@ file==>project structure,弹出的窗口中选中module==>test2==>绿色加号==
 	<%Provider provide = new Provider();%>
 	<%=provide.provide("冰箱")%>
 	</body>
-	</html>
+	</html>  
+
 idea右上角配置tomcat  
 ![](https://i.imgur.com/YXVW8nl.png)  
+
 ![](https://i.imgur.com/DPqXZkQ.png)  
+
 运行tomcat效果如下  
+
 ![](https://i.imgur.com/IkO3Me5.png)
 
-重复给模块test2添加web.xml跟artifacts的步骤，对test3操作。注意修改tomcat跟jmx端口.
+
+
+> 重复给模块test2添加web.xml跟artifacts的步骤，对test3操作。注意修改tomcat跟jmx端口.
 可以同时运行test3模块。  

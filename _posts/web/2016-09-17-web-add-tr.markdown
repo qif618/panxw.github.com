@@ -1,0 +1,43 @@
+---
+layout: post
+category: "web"
+title:  "jQuery动态添加栏位"
+tags: [web]
+---
+table表   
+
+	<table class="common">
+          <tr>
+	    		<td>
+	    			工号
+	    		</td>
+	    		<td>
+	    			 <input type="text" id="number" name="number" />
+	    		</td>
+	    		<td>
+		    		 <button  onclick="add($(this));">add</button>&nbsp;|&nbsp;  
+			       <button onclick="delete($(this));">delete</button>
+	    		</td>
+		</tr>
+    	</table>
+
+add和delete方法  
+
+
+	function add(test) {
+		var tempAddChild = test.parent().parent().clone(true);
+		tempAddChild.find("input").val("");
+		test.parent().parent().parent().append(tempAddChild);
+	}
+
+	function delete(test) {
+		if(test.parent().parent().parent().children("fieldset").length==1) {
+		
+		} else {
+			test.parent().parent().remove();
+		}
+	}  
+
+效果  
+
+![](../../markdownImg/web/add-tr.PNG)
