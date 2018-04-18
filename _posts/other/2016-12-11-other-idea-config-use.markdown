@@ -7,12 +7,12 @@ tags: [IDEA]
 
 > 通过project structure配置JDK  
 
-![](/markdownImg/other/configjdk.png)  
+![](/markdownImg/other/configjdk.PNG)  
 
 
 > 配置maven  
 
-![](/markdownImg/other/maven.png)  
+![](/markdownImg/other/maven.PNG)  
 
 <!-- more -->
 
