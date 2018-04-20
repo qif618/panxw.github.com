@@ -17,16 +17,18 @@ tags: [spring]
     	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     
     <context:component-scan base-package="com.lyf" annotation-config="true"/>
-    <!-- more -->
-    <mvc:annotation-driven>
-	    <mvc:message-converters>
-		<bean id="jspViewResolver"
+
+    <bean id="jspViewResolver"
 			class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 			<property name="viewClass"
 				value="org.springframework.web.servlet.view.JstlView" />
 			<property name="prefix" value="/jsp/" />
 			<property name="suffix" value=".jsp" />
 		</bean>
+    <!-- more -->
+    <mvc:annotation-driven>
+	    <mvc:message-converters>
+		
 		    <bean class="org.springframework.http.converter.StringHttpMessageConverter">
 		    <property name="supportedMediaTypes">
 			    <list>
