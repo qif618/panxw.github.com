@@ -1,7 +1,7 @@
 ---
 layout: post
 category: "web"
-title:  "nataapp内网穿透"
+title:  "natapp内网穿透"
 tags: [web]
 ---  
 
