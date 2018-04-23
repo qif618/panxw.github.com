@@ -13,7 +13,7 @@ provider配置文件
 		xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
 		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
-	
+	<!-- more -->
 		<!-- 为当前服务提供者取个名字，并且提供给注册中心 -->  
 		<dubbo:application name="imooc-dubbo-item-service"/>  
 		<!-- 向zookeeper注册-->  
