@@ -1,0 +1,159 @@
+---
+layout: post
+category: "web"
+title:  "HTTP请求封装"
+tags: [Web]
+---
+
+引入依赖  
+
+	<dependency>
+		<groupId>org.apache.httpcomponents</groupId>
+		<artifactId>httpcore-nio</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.httpcomponents</groupId>
+		<artifactId>httpasyncclient</artifactId>
+	</dependency>
+
+<!-- more -->
+
+封装的HTTP工具类  
+
+	public class HttpUtil {
+	    public static final String UTF_8 = "UTF-8";
+		/**
+		 * get请求
+		 * @return
+		 */
+		public static String doGet(String url) {
+	        String returnString = null;
+	        try{
+	            HttpClient httpclient = HttpClients.createDefault();
+	            HttpGet request = new HttpGet(url);
+	            HttpResponse response = httpclient.execute(request);
+	            int code = response.getStatusLine().getStatusCode();
+	            if (code == HttpStatus.SC_OK) {//请求成功
+	                /**读取服务器返回过来的json字符串数据**/
+	                returnString = EntityUtils.toString(response.getEntity());
+	            }else{
+	                log.error("请求返回:"+code+"("+url+")");
+	            }
+	        }catch (IOException e) {
+	        	e.printStackTrace();
+	        }
+	        return returnString;
+		}
+	
+	    /**
+	     * post请求
+	     * @return
+	     */
+	    public static String doPost(String url) {
+	        String returnString = null;
+	        try{
+	            HttpClient httpclient = HttpClients.createDefault();
+	            HttpPost request = new HttpPost(url);
+	            HttpResponse response = httpclient.execute(request);
+	            log.info("返回信息： " + response.toString());
+	            int code = response.getStatusLine().getStatusCode();
+	            if (code == HttpStatus.SC_OK) {//请求成功
+	                log.info("返回200");
+	                /**读取服务器返回过来的json字符串数据**/
+	                returnString = EntityUtils.toString(response.getEntity());
+	            }else{
+	                log.error("请求返回:"+code+"("+url+")");
+	            }
+	        }catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	        return returnString;
+	    }
+		
+		/**
+		 * post请求(用于map格式的参数)
+		 */
+		public static String doPost(String url, Map params){
+		    String returnString = null;
+			BufferedReader in = null;
+	        CloseableHttpClient httpclient = HttpClients.createDefault();
+	        CloseableHttpResponse response = null;
+	        try {  
+	            HttpPost request = new HttpPost(url);
+	            List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+	            for (Iterator iter = params.keySet().iterator(); iter.hasNext();) {
+	    			String name = (String) iter.next();
+	    			String value = String.valueOf(params.get(name));
+	    			nvps.add(new BasicNameValuePair(name, value));
+	    		}
+	            request.setEntity(new UrlEncodedFormEntity(nvps, UTF_8));
+	            response = httpclient.execute(request);
+	            int code = response.getStatusLine().getStatusCode();
+	            if (code == HttpStatus.SC_OK) {//请求成功
+	            	in = new BufferedReader(new InputStreamReader(response.getEntity()
+	                        .getContent(),"utf-8"));
+	                StringBuffer sb = new StringBuffer("");  
+	                String line = "";  
+	                String NL = System.getProperty("line.separator");  
+	                while ((line = in.readLine()) != null) {  
+	                    sb.append(line + NL);  
+	                }
+	                in.close();
+	                returnString = sb.toString();
+	            } else{
+	                log.error("请求返回:"+code+"("+url+")");
+	            }
+	        } catch(Exception e){
+	        	e.printStackTrace();
+	        }finally {
+	            closeResponseAndClient(response,httpclient);
+	        }
+	        return returnString;
+	    }
+		
+		/**
+		 * post请求（用于请求json格式的参数）
+		 * @param url
+		 * @param params
+		 * @return
+		 */
+		public static String doPost(String url, String params) throws Exception {
+	        String returnString = null;
+			CloseableHttpClient httpclient = HttpClients.createDefault();
+			HttpPost httpPost = new HttpPost(url);// 创建httpPost
+	        StringEntity entity = new StringEntity(params, UTF_8);
+	        httpPost.setEntity(entity);
+	        httpPost.setHeader("Accept", "application/json");
+	    	httpPost.setHeader("Content-Type", "application/json");
+	        CloseableHttpResponse response = null;
+	        try {
+	        	response = httpclient.execute(httpPost);
+	            StatusLine status = response.getStatusLine();
+	            int code = response.getStatusLine().getStatusCode();
+	            if (code == HttpStatus.SC_OK) {//请求成功
+	            	HttpEntity responseEntity = response.getEntity();
+	                returnString = EntityUtils.toString(responseEntity);
+	            }else{
+					 log.error("请求返回:"+code+"("+url+")");
+				}
+	        }finally {
+	            closeResponseAndClient(response,httpclient);
+	        }
+	        return returnString;
+		}
+	
+		private static void closeResponseAndClient(CloseableHttpResponse response,CloseableHttpClient httpclient){
+	        if (response != null) {
+	            try {
+	                response.close();
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	        try {
+	            httpclient.close();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	}
