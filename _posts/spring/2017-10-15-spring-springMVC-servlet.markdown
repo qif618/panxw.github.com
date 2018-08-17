@@ -25,7 +25,7 @@ tags: [spring]
 			<property name="prefix" value="/jsp/" />
 			<property name="suffix" value=".jsp" />
 		</bean>
-    <!-- more -->
+    
     <mvc:annotation-driven>
 	    <mvc:message-converters>
 		
