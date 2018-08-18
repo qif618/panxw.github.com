@@ -88,9 +88,6 @@ tags: [spring]
 	        String method = request.getMethod();
 	        String url = request.getServletPath();
 	        log.info("访问url: " + url+",访问method: " + method);
-	        if(url.contains("login.do")){//登陆操作，放过
-	            return;
-	        }
 	        User user = (User) request.getSession().getAttribute(Const.CURRENT_USER);
 	        if(user != null){//已登陆，放过
 	            return;
