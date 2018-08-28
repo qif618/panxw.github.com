@@ -2,7 +2,7 @@
 layout: post
 category: "spring"
 title:  "springMVC配置"
-tags: [spring]
+tags: [Spring]
 ---
 ## springMVC配置 ##
 

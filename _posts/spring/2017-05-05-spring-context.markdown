@@ -2,7 +2,7 @@
 layout: post
 category: "spring"
 title:  "annotation-config和component-scan"
-tags: [spring]
+tags: [Spring]
 ---
 
 合并注解配置   

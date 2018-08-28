@@ -1,8 +1,8 @@
 ---
 layout: post
-category: "spring"
+category: "springBoot"
 title:  "springBoot部署GAE"
-tags: [springBoot]
+tags: [SpringBoot]
 ---
 
 前提  

@@ -2,7 +2,7 @@
 layout: post
 category: "linux"
 title:  "安装虚拟机"
-tags: [linux]
+tags: [Linux]
 ---
 
 下载VMWARE12进行安装。  

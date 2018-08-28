@@ -2,7 +2,7 @@
 layout: post
 category: "linux"
 title:  "解决用户没权限问题"
-tags: [linux]
+tags: [Linux]
 ---
 
 切换到root  

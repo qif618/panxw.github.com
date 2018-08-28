@@ -2,7 +2,7 @@
 layout: post
 category: "web"
 title:  "tomcat部署web项目"
-tags: [tomcat]
+tags: [Web]
 ---
 
 

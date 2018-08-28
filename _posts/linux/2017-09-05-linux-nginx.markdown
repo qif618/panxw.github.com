@@ -2,7 +2,7 @@
 layout: post
 category: "linux"
 title:  "linux下安装nginx"
-tags: [linux]
+tags: [Linux]
 ---
 * 目录
 {:toc}

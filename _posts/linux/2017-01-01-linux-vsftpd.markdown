@@ -2,7 +2,7 @@ b---
 layout: post
 category: "linux"
 title:  "linux下安装vsftpd"
-tags: [linux]
+tags: [Linux]
 ---
 安装vsftpd  
 

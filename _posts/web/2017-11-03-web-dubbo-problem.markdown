@@ -2,7 +2,7 @@
 layout: post
 category: "web"
 title:  "dubbo注册zookeeper问题"
-tags: [dubbo]
+tags: [Dubbo]
 ---
 
 provider配置文件   

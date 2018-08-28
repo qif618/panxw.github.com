@@ -2,7 +2,7 @@
 layout: post
 category: "web"
 title:  "IDEA中个别依赖下载失败"
-tags: [maven]
+tags: [Maven]
 ---
 
 

@@ -2,7 +2,7 @@
 layout: post
 category: "spring"
 title:  "Autowired和Resource区别"
-tags: [spring]
+tags: [Spring]
 ---
 ## Autowired和Resource区别 ##
 
