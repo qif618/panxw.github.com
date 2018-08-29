@@ -12,7 +12,9 @@ font: 14px/2 tahoma, arial, Microsoft YaHei, sans-serif;
     color: #333;
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
-
+.container{
+	width: 1400px;
+}
 img {
 
     max-width: 100%;
