@@ -13,7 +13,7 @@ all_categories: [
 ["python", "Python","/qif/python/index.html"], 
 ["hibernate", "Hibernate","/qif/hibernate/index.html"],
 ["spring", "Spring","/qif/spring/index.html"], 
-["spring", "SpringBoot","/qif/springBoot/index.html"], 
+["springBoot", "SpringBoot","/qif/springBoot/index.html"], 
 ["mybatis", "Mybatis","/qif/mybatis/index.html"],
 ["git", "Git","/qif/git/index.html"], 
 ["linux", "Linux","/qif/linux/index.html"], 
