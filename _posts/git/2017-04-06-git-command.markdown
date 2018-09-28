@@ -49,6 +49,12 @@ git commit -am 'first commit'
 git remote add origin https://github.com/yourgithub/test.git
 ```
 
+将本地分支与远程分支关联  
+
+```
+git branch --set-upstream master origin/master
+```
+
 推送到远程：  
 
 ```
