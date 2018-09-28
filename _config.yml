@@ -19,6 +19,7 @@ all_categories: [
 ["linux", "Linux","/qif/linux/index.html"], 
 ["web", "Web","/qif/web/index.html"],
 ["other", "Other","/qif/other/index.html"],
+["tags", "Tags","/tags.html"],
 ["about", "关于","/qif/aboutMe.html"]
 ]
 
