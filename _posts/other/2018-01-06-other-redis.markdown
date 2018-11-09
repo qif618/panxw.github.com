@@ -36,27 +36,27 @@ http://download.redis.io/releases/
 
 	cp redis.conf /usr/local/redis
 
-6.将daemonize on修改为  daemonize yes，开启守护线程，让redis可以在后台运行
+6.将redis.conf中daemonize no修改为  daemonize yes，开启守护线程，让redis可以在后台运行
 
 7、redis默认只有本机能访问，配置**公网访问**需在redis.conf中设置密码如：requirepass 123，并注释bind 127.0.0.1
 
 
-8.后端启动redis：  
+8.进入/urs/local/redis下，后端启动redis：  
 
-	./src/redis-server ./redis.conf 
-	./src/redis-server ./myredis.conf(使用自己的配置) 
+	./bin/redis-server ./redis.conf 
+	./bin/redis-server ./myredis.conf(使用自己的配置) 
 
 9、查看是否启动成功：  
 
-	ps -ef	 | grep -i redis
+	ps -ef|grep -i redis
 
 10、连接redis客户端  
 
-	src/redis-cli（无密码连接）
-	src/redis-cli -a "密码" -p "端口号"
+	./bin/redis-cli（无密码连接）
+	./bin/redis-cli -a 密码 -p 端口号
 
 11、关闭redis进程：  
 
-	src/redis-cli shutdown 
-	src/redis-cli -a "密码" -p "端口号" shutdown
+	./bin/redis-cli shutdown 
+	./bin/redis-cli -a "密码" -p "端口号" shutdown
 
