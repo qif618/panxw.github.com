@@ -23,13 +23,6 @@ tags: [Linux]
 	rpm -ivh mysql57-community-release-el7-8.noarch.rpm 
 	yum -y install mysql-server 
 
-安装完成，默认配置  
-
-	配置文件：/etc/my.cnf 
-	日志文件：/var/log/var/log/mysqld.log 
-	服务启动脚本：/usr/lib/systemd/system/mysqld.service 
-	socket文件：/var/run/mysqld/mysqld.pid
-
 启动mysql  
 
 	systemctl restart mysqld
@@ -57,11 +50,26 @@ tags: [Linux]
 
 	grant all on *.* to 'root'@'%' identified by 'test2017!!' with grant option;
 
-修改mysql数据存到数据盘/myData,先停mysql,在/etc/my.cnf下修改
+安装完成，默认配置  
 
+	配置文件：/etc/my.cnf 
+	日志文件：/var/log/var/log/mysqld.log 
+	服务启动脚本：/usr/lib/systemd/system/mysqld.service 
+	socket文件：/var/run/mysqld/mysqld.pid
+
+在myData文件夹下面新建mysqllog文件夹，用于存放log日志  
+
+	cd /myData
+	mkdir mysqllog
+	chown mysql:mysql mysqllog
+
+修改mysql数据存到数据盘/myData,先停mysql,在/etc/my.cnf下修改  
+
+	log_error = /myData/mysqllog/mysql-error.log
 	datadir=/myData/mysql
 	socket=/myData/mysql/mysql.sock
 
-进入/myData下，移动mysql文件夹，最后启动mysql  
+进入/myData下，拷贝mysql文件夹，最后启动mysql  
 
-	mv -a /var/lib/mysql ./
+	cd /myData
+	cp -a /var/lib/mysql ./
