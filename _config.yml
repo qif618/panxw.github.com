@@ -10,9 +10,9 @@ name: "QIF"
 url: http://www.98life.com
 domain: www.98life.com
 all_categories: [
-["python", "Python","/qif/python/index.html"], 
+  ["spring", "Spring","/qif/spring/index.html"], 
+["cloud", "Cloud","/qif/cloud/index.html"], 
 ["hibernate", "Hibernate","/qif/hibernate/index.html"],
-["spring", "Spring","/qif/spring/index.html"], 
 ["springBoot", "SpringBoot","/qif/springBoot/index.html"], 
 ["mybatis", "Mybatis","/qif/mybatis/index.html"],
 ["git", "Git","/qif/git/index.html"], 
