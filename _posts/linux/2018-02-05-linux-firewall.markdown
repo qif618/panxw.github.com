@@ -35,7 +35,7 @@ tags: [Linux]
 
 防火墙打开、关闭、重启、查看状态 
 
-	systemetc start firewalld
-	systemetc restart firewalld
-	systemetc stop firewalld
-	systemetc status firewalld
+	systemctl start firewalld
+	systemectl restart firewalld
+	systemctl stop firewalld
+	systemctl status firewalld
