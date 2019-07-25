@@ -2,7 +2,7 @@
 layout: post
 category: "other"
 title:  "对称与非对称加密"
-tags: [Mysql]
+tags: [Other]
 ---
 
 ### 对称加密 ###
