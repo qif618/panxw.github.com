@@ -1,7 +1,7 @@
 ---
 layout: post
 category: "springBoot"
-title:  "CROS解决跨域"
+title:  "CORS解决跨域"
 tags: [SpringBoot]
 ---
 
@@ -83,7 +83,7 @@ web.xml中配置
 
     <filter>
         <filter-name>cors</filter-name>
-        <filter-class>com.sxk.filter.SimpleCORSFilter</filter-class>
+        <filter-class>com.qif.filter.SimpleCORSFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>cors</filter-name>
