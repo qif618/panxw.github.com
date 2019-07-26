@@ -1,0 +1,190 @@
+---
+layout: post
+category: "web"
+title:  "nginx使用"
+tags: [Web]
+---
+
+> 反向代理  
+
+	location /mySystem/ {
+        #设置被代理服务器的端口或套接字，以及URL
+        proxy_pass  http://192.168.1.56:8081;
+        proxy_redirect off;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto https;
+        #以上三行，目的是将代理服务器收到的用户的信息传到真实服务器上
+        proxy_set_header REMOTE-HOST $remote_addr;
+
+        client_max_body_size 50m;
+        client_body_buffer_size 256k;
+        proxy_connect_timeout 15s;#nginx与upstream server的连接超时时间
+        proxy_send_timeout 30s;#nginx发送数据至upstream server超时, 默认60s, 如果连续的60s内没有发送1个字节, 连接关闭
+        proxy_read_timeout 60s;#nginx接收upstream server数据超时, 默认60s, 如果连续的60s内没有收到1个字节, 连接关闭
+		#以下这些参数都是针对每一个http request ，不是全局的。
+        proxy_buffer_size 256k;
+        proxy_buffers 4 256k;
+        proxy_busy_buffers_size 256k;
+        proxy_temp_file_write_size 256k;
+        proxy_next_upstream error timeout invalid_header http_500 http_503 http_404;
+        proxy_max_temp_file_size 128m;
+    }  
+
+<!-- more -->
+
+说明  
+	
+	1. proxy_buffering  on;
+	该参数设置是否开启proxy的buffer功能，参数的值为on或者off。
+	如果这个设置为off，那么proxy_buffers和proxy_busy_buffers_size这两个指令将会失效。 
+	但是无论proxy_buffering是否开启，proxy_buffer_size都是生效的
+	
+	2. proxy_buffer_size  4k;
+	该参数用来设置一个特殊的buffer大小的。
+	从被代理服务器（C）上获取到的第一部分响应数据内容到代理服务器（B）上，通常是header，就存到了这个buffer中。 
+	如果该参数设置太小，会出现502错误码，这是因为这部分buffer不够存储header信息。建议设置为4k。
+	
+	3. proxy_buffers  8  4k;
+	这个参数设置存储被代理服务器上的数据所占用的buffer的个数和每个buffer的大小。
+	所有buffer的大小为这两个数字的乘积。
+	
+	4. proxy_busy_buffer_size 16k;
+	在所有的buffer里，我们需要规定一部分buffer把自己存的数据传给A，这部分buffer就叫做busy_buffer。
+	proxy_busy_buffer_size参数用来设置处于busy状态的buffer有多大。
+	
+	对于B上buffer里的数据何时传输给A，我个人的理解是这样的：
+	1）如果完整数据大小小于busy_buffer大小，当数据传输完成后，马上传给A；
+	2）如果完整数据大小不少于busy_buffer大小，则装满busy_buffer后，马上传给A；
+	
+	5. proxy_temp_path
+	语法：proxy_temp_path  path [level1 level2 level3]
+	定义proxy的临时文件存在目录以及目录的层级。
+	
+	例：proxy_temp_path /usr/local/nginx/proxy_temp 1 2;
+	其中/usr/local/nginx/proxy_temp为临时文件所在目录，1表示层级1的目录名为1个数字(0-9),2表示层级2目录名为2个数字(00-99)
+	
+	6. proxy_max_temp_file_size
+	设置临时文件的总大小，例如 proxy_max_temp_file_size 100M;
+	
+	7. proxy_temp_file_wirte_size
+	设置同时写入临时文件的数据量的总大小。通常设置为8k或者16k。
+
+> 静态代理  
+
+- Nginx擅长处理静态文件，是非常好的图片、文件服务器。
+- 使用动静分离，对不同的请求做不同转发，静态请求对应的静态资源可以直接放在Nginx上做缓冲，动态请求由后端处理，使整个服务器系统的性能、效率更高。
+
+
+> 负载均衡  
+
+
+
+- 轮询：随机分发  
+
+		upstream bakend{
+	        ip_hash;
+	        server 192.168.1.56:8081 max_fails=10 fail_timeout=60s weight=1;
+	        server 192.168.1.57:8082 max_fails=10 fail_timeout=60s weight=2;
+		}
+
+- ip_hash：当后端服务器列表不变时，同一个IP的每次请求都会转发到同一台后端服务器  
+
+		upstream bakend{
+	        ip_hash;
+	        server 192.168.1.56:8081 max_fails=10 fail_timeout=60s;
+	        server 192.168.1.57:8082 max_fails=10 fail_timeout=60s;
+		}
+
+
+
+- 加权轮询:性能好的服务器，配置更高的权重，让其处理更多的请求  
+
+		upstream bakend{
+	        ip_hash;
+	        server 192.168.1.56:8081 max_fails=10 fail_timeout=60s weight=1;
+	        server 192.168.1.57:8082 max_fails=10 fail_timeout=60s weight=2;
+		}
+
+> 限流   
+
+	http模块下配置
+	#$binary_remote_addr 表示保存客户端IP地址的二进制形式。16000个IP地址的状态信息约1MB
+	limit_req_zone $binary_remote_addr zone=one:50m rate=50r/s;#每秒最多50个请求
+    limit_conn_zone $binary_remote_addr zone=addr:50m;
+	
+	location /mySystem/ {
+		limit_req zone=one burst=100 nodelay;#burst排队大小，nodelay不限制单个请求间的时间。
+        limit_conn addr 25;#同一个IP下只能有25个连接
+	}
+
+
+
+> 缓存  
+
+http层配置  
+
+	proxy_connect_timeout 10;
+    proxy_read_timeout 180;
+    proxy_send_timeout 5;
+    proxy_buffer_size 16k;
+    proxy_buffers 4 32k;
+    proxy_busy_buffers_size 96k;
+    proxy_temp_file_write_size 96k;
+    proxy_temp_path /tmp/temp_dir;
+    proxy_cache_path /tmp/cache levels=1:2 keys_zone=mycache:100m inactive=1d max_size=10g;
+
+server层配置  
+
+	#以下后缀的文件会缓存
+    location ~ .*\.(gif|jpg|png|css|js)(.*) {
+        proxy_pass http://XXX:8080;#nginx缓存里拿不到资源，向该地址转发请求，拿到新的资源，并进行缓存
+        proxy_redirect off;
+        proxy_set_header Host $host;
+        proxy_cache mycache;#指定用于页面缓存的共享内存，对应http层设置的keys_zone
+        proxy_cache_valid 200 302 24h;#为不同的响应状态码设置不同的缓存时间
+        proxy_cache_valid 301 30d;
+        proxy_cache_valid any 5m;
+        expires 7d;
+        add_header static_nginx_proxy;
+    }
+
+> 配置监控  
+
+通过nginx -V来查看是否有with-http_stub_status_module该模块。
+	
+配置  
+
+	location /myNginxStatus {
+           stub_status on;
+           access_log /myData/nginxlog/status.log;    #日志
+           auth_basic "NginxStatus";
+    }
+
+访问  
+
+	http://XXX/myNginxStatus
+
+说明  
+
+	active connections – 活跃的连接数量
+	server accepts handled requests — 总共处理了11989个连接 , 成功创建11989次握手, 总共处理了11991个请求
+	reading — 读取客户端的连接数.
+	writing — 响应数据到客户端的数量
+	waiting — 开启 keep-alive 的情况下,这个值等于 active – (reading+writing), 意思就是 Nginx 已经处理完正在等候下一次请求指令的驻留连接.
+
+
+
+> 日志  
+
+http层配置  
+
+	log_format  main  '$remote_addr - $remote_user [$time_local] "$request"     '
+                      '$status  bodyBytes--$body_bytes_sent     '
+                      'requestTime--$request_time responseTime--$upstream_response_time ';
+
+server层配置  
+
+	access_log  /myData/nginx/logs/access.log  main;
