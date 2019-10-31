@@ -188,3 +188,46 @@ http层配置
 server层配置  
 
 	access_log  /myData/nginx/logs/access.log  main;
+	error_log  /myData/nginx/logs/error.log  error;
+
+切割日志可执行文件log-rotate.sh
+
+	#!/bin/bash
+
+	#存放日志目录
+	logs_path=/myData/nginxlog;
+	pid_path=/myData/nginxlog/nginx.pid;
+	
+	#获取前一天的日期
+	YESTERDAY=$(date -d "yesterday" +%Y-%m-%d);
+	mv ${logs_path}/access.log ${logs_path}/access_${YESTERDAY}.log
+	mv ${logs_path}/error.log ${logs_path}/error_${YESTERDAY}.log
+	
+	#重新执行nginx 信号量  重读日志
+	kill -USR1 `cat ${pid_path}`;
+
+配置定时任何切割日志  
+
+	#查看当前的定时任务
+	crontab -l
+	#创建定时任务
+	crontab -e
+	#每天零点1分切割，编写代码(分 时 日 月 周)
+	01 00 * * * /usr/local/nginx/log-rotate.sh
+	#重新载入定时任务
+	systemctl reload crond
+
+日志统计分析  
+
+	1.查看访问量前10的IP
+	awk '{print $1}' access.log | sort | uniq -c | sort -nr | head -n 10 
+	2.查看访问前10的URL
+	awk '{print $11}' access.log | sort | uniq -c | sort -nr | head -n 10
+	3.根据访问IP统计UV
+	awk '{print $1}' access.log|sort | uniq -c |wc -l
+	4.统计访问URL统计PV
+	awk '{print $7}' access.log|wc -l
+	5.查询访问最频繁的URL
+	awk '{print $7}' access.log|sort | uniq -c |sort -n -k 1 -r|more
+	6.查询访问最频繁的IP
+	awk '{print $1}' access.log|sort | uniq -c |sort -n -k 1 -r|more
