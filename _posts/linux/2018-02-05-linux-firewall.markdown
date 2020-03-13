@@ -29,9 +29,11 @@ tags: [Linux]
 
 > centos7防火墙
 
-进入防火墙开放端口配置文件  
+开发端口，<zone>里加入  
 
 	vim /etc/firewalld/zones/public.xml
+	<port protocol="tcp" port="80"/>
+	<port protocol="tcp" port="443"/>
 
 防火墙打开、关闭、重启、查看状态 
 

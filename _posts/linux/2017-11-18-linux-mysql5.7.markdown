@@ -1,8 +1,8 @@
 ---
 layout: post
-category: "linux"
+category: "database"
 title:  "centos7下RPM安装mysql5.7"
-tags: [Linux]
+tags: [Database]
 ---
 
 查看是否有安装mysql  
@@ -50,6 +50,8 @@ tags: [Linux]
 
 	grant all on *.* to 'root'@'%' identified by 'test2017!!' with grant option;
 
+
+
 安装完成，默认配置  
 
 	配置文件：/etc/my.cnf 
@@ -73,3 +75,114 @@ tags: [Linux]
 
 	cd /myData
 	cp -a /var/lib/mysql ./
+
+后续用户信息  
+
+	mysql -u root -p 
+	use mysql;
+	修改密码：update user set authentication_string=password("新密码") where user='qif';
+	修改host:update user set host = '%' where user = 'qif';
+	flush privileges;
+
+/etc/my.cnf配置  
+
+	[client]
+	port = 3306
+	socket = /myData/mysql/mysql.sock
+	default-character-set = utf8
+	
+	[mysqld]
+	port = 3306
+	socket = /myData/mysql/mysql.sock
+	
+	basedir = /usr/lib64/mysql
+	datadir = /myData/mysql
+	user = mysql
+	bind-address = 0.0.0.0
+	server-id = 1
+	
+	init-connect = 'SET NAMES utf8'
+	character-set-server = utf8
+	
+	skip-name-resolve
+	#skip-networking
+	back_log = 300
+	
+	sql_mode = STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+	
+	max_connections = 1000
+	max_connect_errors = 6000
+	open_files_limit = 65535
+	table_open_cache = 256
+	max_allowed_packet = 4M
+	binlog_cache_size = 1M
+	max_heap_table_size = 8M
+	tmp_table_size = 32M
+	
+	read_buffer_size = 2M
+	read_rnd_buffer_size = 8M
+	sort_buffer_size = 8M
+	join_buffer_size = 8M
+	key_buffer_size = 16M
+	
+	thread_cache_size = 16
+	
+	query_cache_type = 1
+	query_cache_size = 16M
+	query_cache_limit = 2M
+	
+	ft_min_word_len = 4
+	
+	log_bin = /myData/mysqllog/mysql-bin
+	binlog_format = mixed
+	expire_logs_days = 30
+	
+	log_error = /myData/mysqllog/mysql-error.log
+	slow_query_log = 1
+	long_query_time = 1
+	slow_query_log_file = /myData/mysqllog/mysql-slow.log
+	
+	performance_schema = 0
+	explicit_defaults_for_timestamp
+	
+	#lower_case_table_names = 1
+	
+	skip-external-locking
+	
+	default_storage_engine = InnoDB
+	
+	innodb_file_per_table = 1
+	innodb_open_files = 500
+	innodb_buffer_pool_size = 4096M
+	innodb_write_io_threads = 4
+	innodb_read_io_threads = 4
+	innodb_thread_concurrency = 0
+	innodb_purge_threads = 1
+	innodb_flush_log_at_trx_commit = 2
+	innodb_log_buffer_size = 2M
+	innodb_log_file_size = 32M
+	innodb_log_files_in_group = 3
+	innodb_max_dirty_pages_pct = 90
+	innodb_lock_wait_timeout = 120
+	
+	event_scheduler=ON 
+	
+	bulk_insert_buffer_size = 8M
+	myisam_sort_buffer_size = 16M
+	myisam_max_sort_file_size = 10G
+	myisam_repair_threads = 1
+	
+	interactive_timeout = 28800
+	wait_timeout = 28800
+	
+	[mysqldump]
+	quick
+	max_allowed_packet = 16M
+	
+	[myisamchk]
+	key_buffer_size = 16M
+	sort_buffer_size = 8M
+	read_buffer = 4M
+	write_buffer = 4M
+
+
