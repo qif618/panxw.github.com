@@ -66,3 +66,12 @@ tags: [Linux]
 > 修改rabbitmq配置
 
 	cp /usr/share/doc/rabbitmq-server-3.6.10/rabbitmq.config.example /etc/rabbtimq/rabbitmq.config
+
+
+> 安装消息延迟插件
+
+	wget https://dl.bintray.com/rabbitmq/community-plugins/3.6.x/rabbitmq_delayed_message_exchange/rabbitmq_delayed_message_exchange-20171215-3.6.x.zip
+
+	unzip rabbitmq_delayed_message_exchange-20171215-3.6.x.zip -d /usr/lib/rabbitmq/lib/rabbitmq_server-3.6.10/plugins
+
+	rabbitmq-plugins enable rabbitmq_delayed_message_exchange
