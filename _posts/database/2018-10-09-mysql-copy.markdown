@@ -22,7 +22,7 @@ mysql服务器， 一般有两个线程来负责复制和被复制。
 
 主机mysqldump出需要同步的sql文件，压缩并拷至从机
 
-	mysqldump -u root -p --master-data=2 --skip-add-locks --skip-lock-tables --single-transaction  db1 > /myData/db1.sql
+	mysqldump -u root -p --master-data=2 --skip-add-locks --skip-lock-tables --single-transaction -F  db1 > /myData/db1.sql
 
 	此语句导出的sql文件不包含创建数据库语句
 	1、--master-data=1会在mysqldump生成的sql文件里面加上CHANGE MASTES TO(master-data=2会注释掉)，默认开启锁表
@@ -30,7 +30,7 @@ mysql服务器， 一般有两个线程来负责复制和被复制。
 	3、--flush logs命令的作用就是关闭当前使用的binary log，然后打开一个新的binary log文件，文件的序号加1
 	4、--hex-blob 即以16进制导出blob字段数据。 同版本下不加此参数一般不会有什么问题，但在不同MySQL版本间最好加此参数
 	5、要想导出大表的话，应结合使用--quick 选项
-
+	6、每次执行mysqldump都刷新binlog，生成一个新的：-F
 	压缩并拷至从机
 	gzip db1.sql
 	scp /myData/db1.sql.gz qif@192.168.1.111:/myData/ #拷贝sql文件至从机服务器的myData文件夹下
@@ -81,6 +81,7 @@ mysql服务器， 一般有两个线程来负责复制和被复制。
 	server-id=2 //从机配置server-id，需跟主机不一致
 	replicate-do-db = db1 #指定同步的数据库,其他主机的库不被同步
 	log-slave-updates = 1 #默认为0，即同步的sql语句不写入bin-log中
+	relay-log = /myData/myqllog/mysql-relay-bin #指定relay-log位置
 
 	#replicate-ignore-db 设定需要忽略的复制数据库
 	#replicate-do-table  设定需要复制的表
