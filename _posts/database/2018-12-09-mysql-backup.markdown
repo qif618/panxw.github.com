@@ -21,7 +21,7 @@ tags: [Database]
 	backup_dir='/myData/mysqlbackup/'
 	current_time=$(date +'%Y-%m-%d_%H%M%S')
 	filepath=$backup_dir$current_time'.sql.gz'
-	#gzip 压缩，压缩前800k，压缩后4k
+	#gzip 压缩，压缩前800k，压缩后200k
 	echo '开始导出数据库...'
 	#-F刷新日志，-R备份存储过程
 	mysqldump --defaults-extra-file=/myData/mysqlbackup/login_info.cnf -F -R  $db_name | gzip > $filepath
@@ -37,6 +37,8 @@ tags: [Database]
 	user=root
 	password='qif'
 	--------------------------
+
+<!-- more -->
 
 > 手动执行备份
 
