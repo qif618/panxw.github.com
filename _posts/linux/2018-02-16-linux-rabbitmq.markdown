@@ -75,3 +75,15 @@ tags: [Linux]
 	unzip rabbitmq_delayed_message_exchange-20171215-3.6.x.zip -d /usr/lib/rabbitmq/lib/rabbitmq_server-3.6.10/plugins
 
 	rabbitmq-plugins enable rabbitmq_delayed_message_exchange
+
+重启rabbitMq用户丢失解决  
+
+	原因：RabbitMQ数据是根据当前hostname作为node节点作为数据名保存
+	数据路径：/var/lib/rabbitmq/mnesia/
+	可以通过添加RabbitMQ固定节点名字为info，保证数据文件不变
+	echo 'NODENAME=rabbit@info' | sudo tee -a /etc/rabbitmq/rabbitmq-env.conf
+
+设置开机启动
+
+	systemctl enable rabbitmq-server.service
+	
